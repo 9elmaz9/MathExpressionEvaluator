@@ -9,4 +9,6 @@ public interface BasicMathService {
     double multiply(double firstNumber, double secondNumber);
 
     double divide(double dividend, double divider);
+
+    double modulus(double firstNumber,double secondNumber);
 }

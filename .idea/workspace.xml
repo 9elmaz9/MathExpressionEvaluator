@@ -6,6 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="9f4fb0a5-6c1e-4e7e-8c03-7bb78b3b4eb8" name="Changes" comment="add">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/be/intecbrussel/MathExpressionEvaluator/service/BasicMathService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/be/intecbrussel/MathExpressionEvaluator/service/BasicMathService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/be/intecbrussel/MathExpressionEvaluator/service/BasicMathServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/be/intecbrussel/MathExpressionEvaluator/service/BasicMathServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/be/intecbrusselMathExpressionEvaluator/service/BasicMathServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/be/intecbrusselMathExpressionEvaluator/service/BasicMathServiceTest.java" afterDir="false" />
     </list>
@@ -47,20 +48,7 @@
     "project.structure.side.proportion": "0.2"
   }
 }]]></component>
-  <component name="RunManager" selected="JUnit.BasicMathServiceTest">
-    <configuration name="Potato" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="be.intecbrussel.MathExpressionEvaluator.Potato" />
-      <module name="MathExpressionEvaluator" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="be.intecbrussel.MathExpressionEvaluator.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="JUnit.BasicMathServiceTest.testBasicModulo">
     <configuration name="BasicMathServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="MathExpressionEvaluator" />
       <extension name="coverage">
@@ -108,7 +96,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="BasicMathServiceTest.testBasicAdditions" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="BasicMathServiceTest.testBasicDivide" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="MathExpressionEvaluator" />
       <extension name="coverage">
         <pattern>
@@ -118,7 +106,23 @@
       </extension>
       <option name="PACKAGE_NAME" value="be.intecbrusselMathExpressionEvaluator.service" />
       <option name="MAIN_CLASS_NAME" value="be.intecbrusselMathExpressionEvaluator.service.BasicMathServiceTest" />
-      <option name="METHOD_NAME" value="testBasicAdditions(double,double,double)" />
+      <option name="METHOD_NAME" value="testBasicDivide(double,double,double)" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BasicMathServiceTest.testBasicModulo" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="MathExpressionEvaluator" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="be.intecbrusselMathExpressionEvaluator.service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="be.intecbrusselMathExpressionEvaluator.service" />
+      <option name="MAIN_CLASS_NAME" value="be.intecbrusselMathExpressionEvaluator.service.BasicMathServiceTest" />
+      <option name="METHOD_NAME" value="testBasicModulo(double,double,double)" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -126,11 +130,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.BasicMathServiceTest.testBasicModulo" />
+        <item itemvalue="JUnit.BasicMathServiceTest.testBasicDivide" />
         <item itemvalue="JUnit.BasicMathServiceTest" />
         <item itemvalue="JUnit.BasicMathServiceTest.testBasicAddictionOfTwoNegativeIntegers" />
         <item itemvalue="JUnit.BasicMathServiceTest.testBasicAdditionOfTwoIntegers" />
-        <item itemvalue="JUnit.BasicMathServiceTest.testBasicAdditions" />
-        <item itemvalue="Application.Potato" />
       </list>
     </recent_temporary>
   </component>
@@ -157,7 +161,14 @@
       <option name="project" value="LOCAL" />
       <updated>1705316049779</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="add">
+      <created>1705328683848</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1705328683848</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -185,7 +196,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/be/intecbrusselMathExpressionEvaluator/service/BasicMathServiceTest.java</url>
-          <line>167</line>
+          <line>190</line>
           <option name="timeStamp" value="7" />
         </line-breakpoint>
       </breakpoints>

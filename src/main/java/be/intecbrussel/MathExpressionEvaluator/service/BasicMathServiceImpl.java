@@ -94,4 +94,20 @@ public class BasicMathServiceImpl implements BasicMathService {
 
 
     }
+
+    @Override
+    public double modulus(double firstNumberDividend, double secondNumberDivider) {
+        String firstNumberAsString= String.valueOf(firstNumberDividend);
+        String secondNumberAsString = String.valueOf(secondNumberDivider);
+
+
+        BigDecimal firstDecimal = new BigDecimal(String.valueOf(firstNumberDividend));
+        BigDecimal secondDecimal = new BigDecimal(String.valueOf(secondNumberDivider));
+
+       // BigDecimal result = firstDecimal.divide(secondDecimal);
+        BigDecimal result = BigDecimal.valueOf(firstNumberDividend%secondNumberDivider);
+
+       // return result.doubleValue();
+        return result.doubleValue();
+    }
 }

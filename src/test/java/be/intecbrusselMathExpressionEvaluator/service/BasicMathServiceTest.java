@@ -164,5 +164,28 @@ public class BasicMathServiceTest {
         );
 
     }
+    @ParameterizedTest
+    @MethodSource("basicModuloFactory")
+    public void testBasicModulo(double dividend, double divider, double expectedValue) {
+        double result = basicMathService.modulus(dividend, divider);
+
+        Assertions.assertEquals(expectedValue, result); // tonen resulr
+    }
+
+    public static Stream<Arguments> basicModuloFactory() {
+
+        return Stream.of(
+                Arguments.of(5, 3, 2),
+                Arguments.of(50, 3, 2),
+                Arguments.of(-5, 3, -2.0),
+                // Arguments.of(10, 0, 0),
+                Arguments.of(-7, -3, -1.0),
+                Arguments.of(5.5, 4.5,1.0),
+                Arguments.of(2_000_000_000, 2_000_000_000, 0.0),
+                Arguments.of(-0.00001, 0.00002, -1.0E-5),
+                Arguments.of(0.99_999, 0.000_001, 9.076169788066642E-17)
+        );
+
+    }
 
 }
