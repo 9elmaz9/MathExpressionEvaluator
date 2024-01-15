@@ -92,4 +92,77 @@ public class BasicMathServiceTest {
         );
 
     }
+
+
+    @ParameterizedTest
+    @MethodSource("basicSubtractFactory")
+    public void testBasicSubtract(double number1, double number2, double expectedValue) {
+        double result = basicMathService.subtract(number1, number2);
+        Assertions.assertEquals(expectedValue, result); // tonen resulr
+    }
+
+    public static Stream<Arguments> basicSubtractFactory() {
+        //return null;
+        return Stream.of(
+                Arguments.of(5, 3, 2),
+                Arguments.of(50, 3, 47),
+                Arguments.of(-5, 3, -8),
+                Arguments.of(0, 0, 0),
+                Arguments.of(-7, -3, -4),
+                Arguments.of(5.5, 4.5, 1),
+                Arguments.of(2000000000, 2000000000, 0),
+                Arguments.of(-0.00001, 0.00002, -0.00003),
+                Arguments.of(0.99999, 0.000001, 0.999989)
+        );
+
+    }
+
+    @ParameterizedTest
+    @MethodSource("basicMultiplyFactory")
+    public void testBasicMultiply(double number1, double number2, double expectedValue) {
+        double result = basicMathService.multiply(number1, number2);
+        Assertions.assertEquals(expectedValue, result); // tonen resulr
+    }
+
+    public static Stream<Arguments> basicMultiplyFactory() {
+        //return null;
+        return Stream.of(
+                Arguments.of(5, 3, 15),
+                Arguments.of(50, 3, 150),
+                Arguments.of(-5, 3, -15),
+                Arguments.of(1, 0, 0),
+                Arguments.of(-7, -3, 21),
+                Arguments.of(5.5, 4.5, 24.75),
+                Arguments.of(2_000_000_000, 2_000_000_000, 4e18),
+                Arguments.of(-0.00001, 0.00002, -2e-10),
+                Arguments.of(0.99_999, 0.000_001, 9.9999e-7)
+        );
+
+    }
+
+
+    @ParameterizedTest
+    @MethodSource("basicDivideFactory")
+    public void testBasicDivide(double dividend, double divider, double expectedValue) {
+        double result = basicMathService.divide(dividend, divider);
+
+        Assertions.assertEquals(expectedValue, result); // tonen resulr
+    }
+
+    public static Stream<Arguments> basicDivideFactory() {
+
+        return Stream.of(
+                Arguments.of(5, 3, 1.6666666667),
+                Arguments.of(50, 3, 16.6666666667),
+                Arguments.of(-5, 3, -1.6666666667),
+               // Arguments.of(10, 0, 0),
+                Arguments.of(-7, -3, 2.3333333333),
+                Arguments.of(5.5, 4.5, 1.2222222222),
+                Arguments.of(2_000_000_000, 2_000_000_000, 1),
+                Arguments.of(-0.00001, 0.00002, -0.5),
+                Arguments.of(0.99_999, 0.000_001, 999990.0)
+        );
+
+    }
+
 }

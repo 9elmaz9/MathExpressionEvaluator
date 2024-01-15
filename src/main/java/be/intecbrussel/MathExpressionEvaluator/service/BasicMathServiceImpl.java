@@ -44,16 +44,54 @@ public class BasicMathServiceImpl implements BasicMathService {
 
     @Override
     public double subtract(double firstNumber, double secondNumber) {
-        return 0;
+
+        String firstNumberAsString=String.valueOf(firstNumber);
+        String secondNumberAsString=String.valueOf(secondNumber);
+
+
+        BigDecimal firstDecimal = new BigDecimal(String.valueOf(firstNumber));
+        BigDecimal secondDecimal = new BigDecimal(String.valueOf(secondNumber));
+
+        BigDecimal result = firstDecimal.subtract(secondDecimal);
+
+        return result.doubleValue();
+
     }
 
     @Override
     public double multiply(double firstNumber, double secondNumber) {
-        return 0;
+        String firstNumberAsString = String.valueOf(firstNumber);
+        String secondNumberAsString = String.valueOf(secondNumber);
+
+
+        BigDecimal firstDecimal = new BigDecimal(String.valueOf(firstNumber));
+        BigDecimal secondDecimal = new BigDecimal(String.valueOf(secondNumber));
+
+        BigDecimal result = firstDecimal.multiply(secondDecimal);
+
+        return result.doubleValue();
+
     }
 
     @Override
     public double divide(double dividend, double divider) {
-        return 0;
+
+        if(divider==0){
+            System.out.println("Error");
+            throw new ArithmeticException("can't be divided by ZERO");
+
+        }
+     // String firstDividendAsString = String.valueOf( dividend);
+     // String secondDividendAsString = String.valueOf(divider);
+
+
+        BigDecimal firstDecimal =  BigDecimal.valueOf(dividend);
+        BigDecimal secondDecimal =  BigDecimal.valueOf(divider);
+
+        BigDecimal result = firstDecimal.divide(secondDecimal,10,BigDecimal.ROUND_HALF_UP);
+
+        return result.doubleValue();
+
+
     }
 }
