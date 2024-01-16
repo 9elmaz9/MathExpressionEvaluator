@@ -5,13 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9f4fb0a5-6c1e-4e7e-8c03-7bb78b3b4eb8" name="Changes" comment="add">
-      <change afterPath="$PROJECT_DIR$/src/main/java/be/intecbrussel/MathExpressionEvaluator/exception/InvalidExpressionException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/be/intecbrussel/MathExpressionEvaluator/service/MathExpressionService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/be/intecbrussel/MathExpressionEvaluator/service/MathExpressionServiceImp.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/be/intecbrusselMathExpressionEvaluator/service/MathExpressionServiceTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/be/intecbrussel/MathExpressionEvaluator/service/BasicMathServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/be/intecbrussel/MathExpressionEvaluator/service/BasicMathServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/be/intecbrusselMathExpressionEvaluator/service/BasicMathServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/be/intecbrusselMathExpressionEvaluator/service/BasicMathServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/be/intecbrussel/MathExpressionEvaluator/service/MathExpressionServiceImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/be/intecbrussel/MathExpressionEvaluator/service/MathExpressionServiceImp.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,7 +46,7 @@
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;
   }
 }</component>
-  <component name="RunManager" selected="JUnit.BasicMathServiceTest">
+  <component name="RunManager" selected="JUnit.MathExpressionServiceTest">
     <configuration name="BasicMathServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="MathExpressionEvaluator" />
       <extension name="coverage">
@@ -78,22 +73,6 @@
       <option name="PACKAGE_NAME" value="be.intecbrusselMathExpressionEvaluator.service" />
       <option name="MAIN_CLASS_NAME" value="be.intecbrusselMathExpressionEvaluator.service.BasicMathServiceTest" />
       <option name="METHOD_NAME" value="testBasicAddictionOfTwoNegativeIntegers" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="BasicMathServiceTest.testBasicAdditionOfTwoIntegers" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="MathExpressionEvaluator" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="be.intecbrusselMathExpressionEvaluator.service.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="be.intecbrusselMathExpressionEvaluator.service" />
-      <option name="MAIN_CLASS_NAME" value="be.intecbrusselMathExpressionEvaluator.service.BasicMathServiceTest" />
-      <option name="METHOD_NAME" value="testBasicAdditionOfTwoIntegers" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -131,13 +110,28 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="MathExpressionServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="MathExpressionEvaluator" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="be.intecbrusselMathExpressionEvaluator.service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="be.intecbrusselMathExpressionEvaluator.service" />
+      <option name="MAIN_CLASS_NAME" value="be.intecbrusselMathExpressionEvaluator.service.MathExpressionServiceTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.MathExpressionServiceTest" />
         <item itemvalue="JUnit.BasicMathServiceTest" />
         <item itemvalue="JUnit.BasicMathServiceTest.testBasicModulo" />
         <item itemvalue="JUnit.BasicMathServiceTest.testBasicDivide" />
         <item itemvalue="JUnit.BasicMathServiceTest.testBasicAddictionOfTwoNegativeIntegers" />
-        <item itemvalue="JUnit.BasicMathServiceTest.testBasicAdditionOfTwoIntegers" />
       </list>
     </recent_temporary>
   </component>
@@ -171,7 +165,42 @@
       <option name="project" value="LOCAL" />
       <updated>1705328683848</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="add">
+      <created>1705402298608</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1705402298608</updated>
+    </task>
+    <task id="LOCAL-00005" summary="add">
+      <created>1705402312260</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1705402312260</updated>
+    </task>
+    <task id="LOCAL-00006" summary="add">
+      <created>1705402327351</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1705402327351</updated>
+    </task>
+    <task id="LOCAL-00007" summary="add">
+      <created>1705402333949</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1705402333949</updated>
+    </task>
+    <task id="LOCAL-00008" summary="add">
+      <created>1705402348107</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1705402348107</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -199,7 +228,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/be/intecbrusselMathExpressionEvaluator/service/BasicMathServiceTest.java</url>
-          <line>237</line>
+          <line>232</line>
           <option name="timeStamp" value="7" />
         </line-breakpoint>
       </breakpoints>
