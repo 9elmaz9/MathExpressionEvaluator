@@ -4,6 +4,7 @@ import be.intecbrussel.MathExpressionEvaluator.service.BasicMathService;
 import be.intecbrussel.MathExpressionEvaluator.service.BasicMathServiceImpl;
 import com.sun.jdi.connect.Connector;
 import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.function.Executable;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -14,7 +15,6 @@ import java.util.stream.Stream;
 public class BasicMathServiceTest {
     // private BasicMathService basicMathService;
     //we gaan hier anotatie gebruiken
-
     //public class BasicMathServiceTest{
     private final BasicMathService basicMathService;
 
@@ -22,13 +22,11 @@ public class BasicMathServiceTest {
         this.basicMathService = new BasicMathServiceImpl();
     }
 
-    //@BeforeAllpublic static void setup(){}
-
-    //  @BeforeAll   which will run once
+    //@BeforeAllpublic static void setup(){}     //  @BeforeAll   which will run once
     //public  void beforeAll(){
     //TODO instantiate  the service
     // basicMathService=new BasicMathServiceImpl();
-//}
+    //}
 
     //verscheel - 1 test, voor elke test
     //which will run before every test, so it can reset the conditions for the next one.
@@ -41,7 +39,6 @@ public class BasicMathServiceTest {
 
         int firstNumber = 7;
         int secondNumber = 6;
-
         int expectedValue = 13;
         //ALS
         //int expectedValue = 14;
@@ -58,9 +55,7 @@ public class BasicMathServiceTest {
     public void testBasicAddictionOfTwoNegativeIntegers() {
         int firstNumber = -4;
         int secondNumber = -8;
-
         int expectedResult = -12;
-
         double result = basicMathService.add(firstNumber, secondNumber);
 
         Assertions.assertEquals(expectedResult, result);
@@ -75,7 +70,6 @@ public class BasicMathServiceTest {
         double result = basicMathService.add(number1, number2);
         Assertions.assertEquals(expectedValue, result); // tonen resulr
     }
-
 
     public static Stream<Arguments> basicAdditionFactory() {
         //return null;
@@ -102,7 +96,6 @@ public class BasicMathServiceTest {
     }
 
     public static Stream<Arguments> basicSubtractFactory() {
-        //return null;
         return Stream.of(
                 Arguments.of(5, 3, 2),
                 Arguments.of(50, 3, 47),
@@ -125,7 +118,6 @@ public class BasicMathServiceTest {
     }
 
     public static Stream<Arguments> basicMultiplyFactory() {
-        //return null;
         return Stream.of(
                 Arguments.of(5, 3, 15),
                 Arguments.of(50, 3, 150),
@@ -155,7 +147,7 @@ public class BasicMathServiceTest {
                 Arguments.of(5, 3, 1.6666666667),
                 Arguments.of(50, 3, 16.6666666667),
                 Arguments.of(-5, 3, -1.6666666667),
-               // Arguments.of(10, 0, 0),
+                // Arguments.of(10, 0, 0),
                 Arguments.of(-7, -3, 2.3333333333),
                 Arguments.of(5.5, 4.5, 1.2222222222),
                 Arguments.of(2_000_000_000, 2_000_000_000, 1),
@@ -164,26 +156,76 @@ public class BasicMathServiceTest {
         );
 
     }
+
+    private BasicMathServiceImpl mathService = new BasicMathServiceImpl();
+
+
     @ParameterizedTest
     @MethodSource("basicModuloFactory")
-    public void testBasicModulo(double dividend, double divider, double expectedValue) {
-        double result = basicMathService.modulus(dividend, divider);
-
+    public void testBasicModulo(double number1, double number2, double expectedValue) {
+        double result = basicMathService.modulus(number1, number2);
         Assertions.assertEquals(expectedValue, result); // tonen resulr
     }
 
     public static Stream<Arguments> basicModuloFactory() {
+        //return null;
+        return Stream.of(
+                Arguments.of(9, 3, 0),
+                Arguments.of(-5, 4, -1),
+                Arguments.of(0,5, 0),
+                Arguments.of(10, -4, 2)
+
+        );
+
+    }
+    @Disabled
+    @ParameterizedTest
+    @MethodSource("basicModulusExceptionFactory")
+    public void testBasicModulo_Exception(double number1, double number2, Class<Exception> expectedException)throws Exception {
+        Assertions.assertThrows(expectedException,
+                ()->basicMathService.modulus(number1,number2)); // tonen resulr
+    }
+
+    public static Stream<Arguments> basicModulusFactory() {
 
         return Stream.of(
                 Arguments.of(5, 3, 2),
-                Arguments.of(50, 3, 2),
-                Arguments.of(-5, 3, -2.0),
-                // Arguments.of(10, 0, 0),
-                Arguments.of(-7, -3, -1.0),
-                Arguments.of(5.5, 4.5,1.0),
-                Arguments.of(2_000_000_000, 2_000_000_000, 0.0),
-                Arguments.of(-0.00001, 0.00002, -1.0E-5),
-                Arguments.of(0.99_999, 0.000_001, 9.076169788066642E-17)
+                Arguments.of(50, 3, 2)
+
+        );
+
+    }
+
+
+
+
+    @ParameterizedTest
+    @MethodSource("basicDivide_ExceptionFactory")
+    public void testBasicDivide_Exception(double number1, double number2, Class<Exception> expectedException) throws Exception {
+        // double result = basicMathService.divide(number1, number2);- niet nodig
+        //org.
+        //Executable
+        //Assertions.assertEquals(expectedException, result); // tonen resulr
+
+        //    //vb- deze method WErk OOK :MOGELIJK, LIEVER ASSERTIONS METHODE GEBRUIKEN
+        //    try {
+        //        basicMathService.divide(number1, number2);
+        //    } catch (ArithmeticException e) {
+        //        return;
+        //    } catch (Exception e) {
+        //        Assertions.fail();
+        //    }
+
+        Assertions.assertThrows(expectedException,
+                () -> basicMathService.divide(number1, number2)); // tonen resulr
+    }
+
+    public static Stream<Arguments> basicDivisionExceptionFactoryFactory() {
+        return Stream.of(
+                Arguments.of(0, 0, ArithmeticException.class), // better write which exception ik vervaht
+                Arguments.of(5, 0, ArithmeticException.class),
+                Arguments.of(-5, 0, ArithmeticException.class)
+
         );
 
     }
