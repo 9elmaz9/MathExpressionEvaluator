@@ -1,16 +1,22 @@
 package be.intecbrussel.MathExpressionEvaluator.service;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 public class BasicMathServiceImpl implements BasicMathService {
     @Override
     public double add(double firstNumber, double secondNumber) {
+        BigDecimal firstDecimal = convertDoubleToBigDecimal(firstNumber);
+        BigDecimal secondDecimal = convertDoubleToBigDecimal(secondNumber);
+
+        BigDecimal result = firstDecimal.add(secondDecimal);
+
+        return result.doubleValue();
+
+        /*  alles werk
         //vb3
-
-
         String firstNumberAsString=String.valueOf(firstNumber);
         String secondNumberAsString=String.valueOf(secondNumber);
-
 
         BigDecimal firstDecimal = new BigDecimal(String.valueOf(firstNumber));
         BigDecimal secondDecimal = new BigDecimal(String.valueOf(secondNumber));
@@ -21,7 +27,6 @@ public class BasicMathServiceImpl implements BasicMathService {
       // System.out.println(secondDecimal);
       // System.out.println(result);
         return result.doubleValue();
-
 
         //1 vb
         // return firstNumber+secondNumber;  //default was 0
@@ -44,10 +49,16 @@ public class BasicMathServiceImpl implements BasicMathService {
 
     @Override
     public double subtract(double firstNumber, double secondNumber) {
+        BigDecimal firstDecimal = convertDoubleToBigDecimal(firstNumber);
+        BigDecimal secondDecimal = convertDoubleToBigDecimal(secondNumber);
 
+        BigDecimal result = firstDecimal.subtract(secondDecimal);
+
+        return result.doubleValue();
+
+/* correct - maar lang
         String firstNumberAsString=String.valueOf(firstNumber);
         String secondNumberAsString=String.valueOf(secondNumber);
-
 
         BigDecimal firstDecimal = new BigDecimal(String.valueOf(firstNumber));
         BigDecimal secondDecimal = new BigDecimal(String.valueOf(secondNumber));
@@ -55,14 +66,13 @@ public class BasicMathServiceImpl implements BasicMathService {
         BigDecimal result = firstDecimal.subtract(secondDecimal);
 
         return result.doubleValue();
-
+*/
     }
 
     @Override
     public double multiply(double firstNumber, double secondNumber) {
         String firstNumberAsString = String.valueOf(firstNumber);
         String secondNumberAsString = String.valueOf(secondNumber);
-
 
         BigDecimal firstDecimal = new BigDecimal(String.valueOf(firstNumber));
         BigDecimal secondDecimal = new BigDecimal(String.valueOf(secondNumber));
@@ -76,38 +86,52 @@ public class BasicMathServiceImpl implements BasicMathService {
     @Override
     public double divide(double dividend, double divider) {
 
-        if(divider==0){
-            System.out.println("Error");
-            throw new ArithmeticException("can't be divided by ZERO");
+        BigDecimal firstDecimal = convertDoubleToBigDecimal(dividend);
+        BigDecimal secondDecimal = convertDoubleToBigDecimal(divider);
 
-        }
-     // String firstDividendAsString = String.valueOf( dividend);
-     // String secondDividendAsString = String.valueOf(divider);
-
-
-        BigDecimal firstDecimal =  BigDecimal.valueOf(dividend);
-        BigDecimal secondDecimal =  BigDecimal.valueOf(divider);
-
-        BigDecimal result = firstDecimal.divide(secondDecimal,10,BigDecimal.ROUND_HALF_UP);
+        BigDecimal result = firstDecimal.divide(secondDecimal,10, RoundingMode.HALF_UP);
 
         return result.doubleValue();
 
-
     }
+      private BigDecimal convertDoubleToBigDecimal(double number){
+          String numberAsString=String.valueOf(number);
+          return new BigDecimal(numberAsString);
+        }
+
+ // it is correct work too / another method
+ //     if(divider==0){
+ //         System.out.println("Error");
+ //         throw new ArithmeticException("can't be divided by ZERO");
+ //     }
+ //  // String firstDividendAsString = String.valueOf( dividend);
+ //  // String secondDividendAsString = String.valueOf(divider);
+ //     BigDecimal firstDecimal =  BigDecimal.valueOf(dividend);
+ //     BigDecimal secondDecimal =  BigDecimal.valueOf(divider);
+ //     BigDecimal result = firstDecimal.divide(secondDecimal,10,BigDecimal.ROUND_HALF_UP);
+ //     return result.doubleValue();
+
 
     @Override
-    public double modulus(double firstNumberDividend, double secondNumberDivider) {
-        String firstNumberAsString= String.valueOf(firstNumberDividend);
-        String secondNumberAsString = String.valueOf(secondNumberDivider);
-
-
-        BigDecimal firstDecimal = new BigDecimal(String.valueOf(firstNumberDividend));
-        BigDecimal secondDecimal = new BigDecimal(String.valueOf(secondNumberDivider));
-
-       // BigDecimal result = firstDecimal.divide(secondDecimal);
-        BigDecimal result = BigDecimal.valueOf(firstNumberDividend%secondNumberDivider);
-
-       // return result.doubleValue();
-        return result.doubleValue();
+    public double modulus(double firstNumber, double secondNumber) {
+        return firstNumber % secondNumber;
     }
-}
+
+
+  //    if(secondNumberDivider<0||secondNumberDivider>100){
+  //        throw new IllegalArgumentException("% only 0-100");
+  //    }
+  //    String firstNumberAsString= String.valueOf(firstNumberDividend);
+  //    String secondNumberAsString = String.valueOf(secondNumberDivider);
+
+
+  //    BigDecimal firstDecimal = new BigDecimal(String.valueOf(firstNumberDividend));
+  //    BigDecimal secondDecimal = new BigDecimal(String.valueOf(secondNumberDivider));
+
+  //   // BigDecimal result = firstDecimal.divide(secondDecimal);
+  //    BigDecimal result = BigDecimal.valueOf(firstNumberDividend%secondNumberDivider);
+
+  //    return result.doubleValue();
+  //    //return  calculateMo;
+    }
+
