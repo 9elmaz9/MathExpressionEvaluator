@@ -6,6 +6,7 @@ import be.intecbrussel.MathExpressionEvaluator.model.DoubleWithIndex;
 import java.util.Arrays;
 import java.util.List;
 import java.util.OptionalInt;
+import java.util.stream.Stream;
 
 public class MathExpressionServiceImp implements MathExpressionService {
 
@@ -16,6 +17,7 @@ public class MathExpressionServiceImp implements MathExpressionService {
 
     @Override
     public String evaluate( String expression) {
+        expression = expression.replace(" ", "");
 
         if (isInvalidExpression()) {
             throw new InvalidExpressionException("Invalid expression");
@@ -28,9 +30,48 @@ public class MathExpressionServiceImp implements MathExpressionService {
     }
 
     private boolean isInvalidExpression() {
-        return false;
+        private boolean isInvalidExpression(String expression) {
+            long amountOfOpenBrackets = Stream.of(expression.split(""))
+                    .filter(character -> character.equals("("))
+                    .count();
+            long amountOfClosedBrackets = Stream.of(expression.split(""))
+                    .filter(character -> character.equals(")"))
+                    .count();
+
+            if (amountOfClosedBrackets != amountOfOpenBrackets) {
+                return true;
+            }
+
+            return false;
     }
 
+        private String evaluateAddAndSubtract(String expression) {
+            int index;
+
+            while ((index = getLowestMDMIndex(expression)) >= 0) {
+                char operator = expression.charAt(index);
+                DoubleWithIndex firstNumberAndIndex = findFirstNumberAndIndex(expression, index);
+                DoubleWithIndex secondNumberAndIndex = findSecondNumberAndIndex(expression, index);
+                double result = 0;
+
+                switch (operator) {
+                    case '+':
+                        result = basicMathService.add(firstNumberAndIndex.value, secondNumberAndIndex.value);
+                        break;
+                    case '-':
+                        result = basicMathService.subtract(firstNumberAndIndex.value, secondNumberAndIndex.value);
+                        break;
+                }
+
+                expression = new StringBuilder(expression)
+                        .replace(firstNumberAndIndex.index, secondNumberAndIndex.index+1, String.valueOf(result))
+                        .toString();
+
+
+            }
+
+            return expression;
+        }
 
     private String evaluateMultiplyAndDivideAndModulo(String expression) {
 
@@ -68,18 +109,18 @@ public class MathExpressionServiceImp implements MathExpressionService {
     private DoubleWithIndex findSecondNumberAndIndex(String expression, int index) {
         int firstNumberIndex=findFirstIndexOdAny(expression,index);
         if(firstNumberIndex<0){
-            return new DoubleWithIndex(firstNumberIndex);
+            return new DoubleWithIndex(0,-1);
         }
-        return null;
+            return new DoubleWithIndex(Double.parseDouble(expression.substring(firstNumberIndex, index)), firstNumberIndex);
     }
 
     private int findFirstIndexOdAny(String expression, int index){
         String operators="+-*/%";
         int numnerIndex=-1;
 
-        for(int i= index;i>expression.length();i++){
+        for(int i= index+1;i<expression.length();i++){
             char currentChar=expression.charAt(i);
-            if(operators.contains((""+currentChar)){
+            if(operators.contains((""+currentChar)) {
                 numnerIndex=i-1;
                 break;;
             }
@@ -91,23 +132,16 @@ public class MathExpressionServiceImp implements MathExpressionService {
 
     // method first number
     private DoubleWithIndex findFirstNumberAndIndex(String expression,int  endIndex) {
-        String operator = "+-*/%";
-        int numberIndex = -1;
-        double value = 0;
-
-        for (int i = endIndex; i >= 0; i--) {
-            char currentChar = expression.charAt(i);
-            if (operator.contains("" + currentChar)) {
-                numberIndex = i + 1; // i is operator , i+1 is first digit
-                break;
-                ;
+            int firstNumberIndex = getLastIndexOfAny(expression, index);
+            if (firstNumberIndex < 0) {
+                return new DoubleWithIndex(0, -1);
             }
+
+            return new DoubleWithIndex(Double.parseDouble(expression.substring(firstNumberIndex, index)), firstNumberIndex);
         }
-        return numberIndex;
 
-    }
 
-  //     String[] numbers =expression.split("[-+/%]");
+        //     String[] numbers =expression.split("[-+/%]");
   //     List<String> list=Arrays.stream(numbers)
   //             .filter(number->expression.indexOf(number)<index)
   //             .toList();
@@ -116,7 +150,20 @@ public class MathExpressionServiceImp implements MathExpressionService {
 
   //     return new DoubleWithIndex(number,numberIndex);
 
+        private int getLastIndexOfAny(String expression, int endIndex) {
+            String operators = "+-*/%";
+            int numberIndex = -1;
 
+            for (int i = endIndex; i >= 0; i--) {
+                char currentChar = expression.charAt(i);
+                if (operators.contains(""+currentChar)) {
+                    numberIndex = i+1; // i is operator, i+1 is first digit
+                    break;
+                }
+            }
+
+            return numberIndex;
+        }
 
     private int getLowestMDMIndex(String expression) {
         int[] indices = new int[3];
@@ -156,5 +203,18 @@ public class MathExpressionServiceImp implements MathExpressionService {
         }
         return expression;
     }
+        private int findCloseBracketIndex(String expression, int indexOpenBracket) {
+            int counter = 0;
+            for (int i = indexOpenBracket+1; i < expression.length(); i++) {
+                if (expression.charAt(i) == '(') counter++;
+                else if (expression.charAt(i) == ')') counter--;
+
+                if (counter == -1) return i;
+            }
+
+            return -1;
+        }
+    }
 }
+
 
